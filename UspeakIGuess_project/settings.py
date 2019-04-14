@@ -22,9 +22,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'z+$n^rqu2e#7+=t8)@32sm26w)%6&34&a_5l5t1xbz@!=wf_yp'
 
 # SECURITY WARNING: don't run with debug turned on in production!
+
 DEBUG = True
+if os.environ.get('DEBUG', '').lower() == 'false':
+    DEBUG = False
 
 ALLOWED_HOSTS = [
+    '127.0.0.1',
     'uspeakiguess.herokuapp.com'
 ]
 
