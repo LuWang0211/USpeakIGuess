@@ -8,12 +8,14 @@
 
 <ul> 
     {% for faqitem in all_faqitems %}
-        <li> {{ faqitem.content }} </li>
+    <li>
         <form action="/deleteQuestion/{{faqitem.id}}/" 
-                style="display: inline" 
+                style="display: flex; align-items: center; margin-block-end: 0.5em" 
                 methond="post">{% csrf_token %}
-        <input type="submit" value="Delete"/>
+             {{ faqitem.content }} 
+            <input type="submit" value="Delete" style="margin-left: 1em"/>
         </form>
+    </li>
     {% endfor%}
 </ul> 
 
