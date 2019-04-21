@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'Homepage',
     'FAQ',
+    'AuthorIdentification',
 ]
 
 MIDDLEWARE = [

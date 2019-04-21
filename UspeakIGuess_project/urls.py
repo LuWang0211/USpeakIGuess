@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from Homepage.views import HomepageView
 from FAQ.views import FAQView, addQuestion, deleteQuestion
+from AuthorIdentification.views import AuthorIdView, Identify, Backhome
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,4 +25,7 @@ urlpatterns = [
     path('faq/', FAQView),
     path('addQuestion/', addQuestion),
     path('deleteQuestion/<int:faqitem_id>/', deleteQuestion),
+    path('AuthorIdentification/', AuthorIdView),
+    path('Identify/', Identify),
+    path('Backhome/', Backhome),
 ]
