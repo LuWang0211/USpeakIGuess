@@ -88,6 +88,7 @@ DATABASES = {
     }
 }
 
+DATA_UPLOAD_MAX_MEMORY_SIZE = 5242880
 
 if os.environ.get('DATABASE_URL', False) != False:
     import dj_database_url

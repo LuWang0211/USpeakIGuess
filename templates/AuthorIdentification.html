@@ -1,28 +1,37 @@
 <h1> Author Identification Task<h1>
 
 <ul> 
-    Example(Gutenberg corpus): 
-    
+    Example: 
     Using the NLTK tools to distinguish the three authors(the King James, Jane Austen, G. K. Chesterton) in the Gutenberg corpus
-
+    <li>the King James version of the Bible</li>
+    <li>three novels by Jane Austen</li>
+    <li>three novels or collections of short stories by G. K. Chesterton</li>
 </ul>
 
-<li>Temporary Test Explanation: </li>
+<br>
+    Stylometric Test: John Burrows’ Delta Method
+</br>
+<!-- <li>Temporary Test Explanation: </li>
 <li>Input: 1. includes 'lulu' ; 2. includes 'baobao'; 3. includes 'love' 4. input others </li>
-<li>Output: 1. 'lulu is nice' ; 2. 'baobao is very good'; 3. 'baobao love lulu and lulu love baobao'; 4. 'test response is none' </li>
+<li>Output: 1. 'lulu is nice' ; 2. 'baobao is very good'; 3. 'baobao love lulu and lulu love baobao'; 4. 'test response is none' </li> -->
 
 <form method="post">{% csrf_token %}
-
-    <textarea rows=10 cols=50 name="user_input_test">{{input_test}}</textarea>
+    <textarea rows=10 cols=100 name="user_input_test">{{input_test}}</textarea>
     <button type="submit">Identify</button>
     <br>
-    <label>
-        Elta Identifition Result:
-    </label>
-    <label>
-        {{resp}}
-    </label>
+    <table>
+        {% for resp_0_item in resp_0  %}
+        <li>
+        {{resp_0_item}}
+        </li>
+        {% endfor%}
+    </table>
+    </br>
     <br>
+    <table>
+        {{resp_1}}
+    </table>
+    </br>
 </form>
 
 <!-- <form action="/Identify/" methond="post">
