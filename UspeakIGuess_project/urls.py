@@ -15,13 +15,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from Homepage.views import HomepageView
+from Homepage.views import HomepageView, FAQpage, AuthorIdpage
 from FAQ.views import FAQView, addQuestion, deleteQuestion
 from AuthorIdentification.views import AuthorIdView, Identify, Backhome
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('home/', HomepageView),
+    path('FAQpage/', FAQpage),
+    path('AuthorIdpage/', AuthorIdpage),
     path('faq/', FAQView),
     path('addQuestion/', addQuestion),
     path('deleteQuestion/<int:faqitem_id>/', deleteQuestion),

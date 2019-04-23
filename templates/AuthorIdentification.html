@@ -7,26 +7,28 @@
 
 </ul>
 
+<li>Temporary Test Explanation: </li>
+<li>Input: 1. includes 'lulu' ; 2. includes 'baobao'; 3. includes 'love' 4. input others </li>
+<li>Output: 1. 'lulu is nice' ; 2. 'baobao is very good'; 3. 'baobao love lulu and lulu love baobao'; 4. 'test response is none' </li>
 
-<form action="/Identify/" methond="post">
-    <input type="text" name="content"/>
-    <input type="submit" value="Identify"/>
+<form method="post">{% csrf_token %}
+
+    <textarea rows=10 cols=50 name="user_input_test">{{input_test}}</textarea>
+    <button type="submit">Identify</button>
+    <br>
+    <label>
+        Elta Identifition Result:
+    </label>
+    <label>
+        {{resp}}
+    </label>
+    <br>
 </form>
 
-
-<ul> 
-
-    <!-- <li>
-        <form {{content}} > 
-        </form>
-    </li> -->
-
-    <li>
-        Elta Identifition Result:
-        <!-- <form {{content}} > as TestCase most likely author.
-        </form> -->
-    </li>
-</ul> 
+<!-- <form action="/Identify/" methond="post">
+    <input type="text" name="content"/>
+    <input type="submit" value="Identify"/>
+</form> -->
 
 <form action="/Backhome/" methond="post">
     <input type="submit" value="Back home"/>
