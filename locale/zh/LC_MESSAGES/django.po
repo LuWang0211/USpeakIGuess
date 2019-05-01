@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-01 00:13-0700\n"
+"POT-Creation-Date: 2019-05-01 00:56-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#: FAQ/views.py:16
+msgid "lulu is small guaiguai"
+msgstr "璐璐是个小乖乖"
+
 #: UspeakIGuess_project/settings.py:126 templates/home.html:7
 msgid "English"
 msgstr "英文"
@@ -24,6 +28,14 @@ msgstr "英文"
 #: UspeakIGuess_project/settings.py:127
 msgid "Chinese"
 msgstr "中文"
+
+#: templates/AuthorIdentification.html:45 templates/faq.html:30
+msgid "Backhome"
+msgstr "返回主页"
+
+#: templates/faq.html:26
+msgid "Add"
+msgstr "添加"
 
 #: templates/home.html:2
 msgid "Welcome the Home page of USpeakIGuess!"

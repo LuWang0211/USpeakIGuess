@@ -1,5 +1,7 @@
-<h1> Frequently Asked Questions !<h1>
+{% load i18n %}
 
+<h1> Frequently Asked Questions !<h1>
+<h2> {{ important_text }}</h2>
 <!-- <ul> 
     <li>How do I use this website? </li>
     <li>How can I view my history on checking information? </li>
@@ -21,9 +23,9 @@
 
 <form action="/addQuestion/" methond="post">{% csrf_token%}
     <input type="text" name="content"/>
-    <input type="submit" value="Add"/>
+    <input type="submit" value="{% trans 'Add' %}"/>
 </form>
 
 <form action="/Backhome/" methond="post">
-    <input type="submit" value="Back home"/>
+    <input type="submit" value="{% trans 'Backhome' %}"/>
 </form>
