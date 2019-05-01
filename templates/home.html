@@ -1,18 +1,19 @@
-<h1>{{title}}</h1>
+{% load i18n %}
+<h1>{% trans "Welcome the Home page of USpeakIGuess!" %}</h1>
 
 <form method="post">{% csrf_token %}
     <label>Language/语言</label>
     <select name = "selectelanguage">
-        <option value = "en-us">English </option>
-        <option value = "zh-cn">Chinese(simplified)</option>
+        <option value = "en">{% trans 'English' %}</option>
+        <option value = "zh">{% trans 'Chinese(simplified)' %}</option>
     </select>
     <input type="submit" value="Go" />
  </form>
 
 <form action="/FAQpage/" methond="post">
-    <input type="submit" value={{FAQbuttonvalue}} />
+    <input type="submit" value="{% trans 'FAQ' %}" />
 </form>
 
 <form action="/AuthorIdpage/" methond="post">
-    <input type="submit" value={{AIDbuttonvalue}} />
+    <input type="submit" value="{% trans 'AuthorIdentification' %}" />
 </form>
