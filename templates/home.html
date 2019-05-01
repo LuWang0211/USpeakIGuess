@@ -1,10 +1,18 @@
-<h1> This is the Home page of USpeakIGuess!</h1>
+<h1>{{title}}</h1>
+
+<form method="post">{% csrf_token %}
+    <label>Language/语言</label>
+    <select name = "selectelanguage">
+        <option value = "en-us">English </option>
+        <option value = "zh-cn">Chinese(simplified)</option>
+    </select>
+    <input type="submit" value="Go" />
+ </form>
 
 <form action="/FAQpage/" methond="post">
-    <input type="submit" value="FAQ"/>
+    <input type="submit" value={{FAQbuttonvalue}} />
 </form>
 
 <form action="/AuthorIdpage/" methond="post">
-    <input type="submit" value="Author Identification"/>
+    <input type="submit" value={{AIDbuttonvalue}} />
 </form>
-
