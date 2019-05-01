@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-01 00:56-0700\n"
+"POT-Creation-Date: 2019-05-01 13:58-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,10 +16,6 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-
-#: FAQ/views.py:16
-msgid "lulu is small guaiguai"
-msgstr "璐璐是个小乖乖"
 
 #: UspeakIGuess_project/settings.py:126 templates/home.html:7
 msgid "English"
@@ -29,11 +25,49 @@ msgstr "英文"
 msgid "Chinese"
 msgstr "中文"
 
-#: templates/AuthorIdentification.html:45 templates/faq.html:30
+#: templates/AuthorIdentification.html:3
+msgid "Author Identification Task"
+msgstr "作者身份识别"
+
+#: templates/AuthorIdentification.html:6
+msgid ""
+"Example: Using the NLTK tools to distinguish the three authors(the King "
+"James, Jane Austen, G. K. Chesterton) in the Gutenberg corpus"
+msgstr "示例：使用NLTK工具区分Gutenberg语料库(如下列)中三位作者"
+
+#: templates/AuthorIdentification.html:7
+msgid "the King James version of the Bible"
+msgstr "钦定版圣经(詹姆斯王圣经版本)"
+
+#: templates/AuthorIdentification.html:8
+msgid "three novels by Jane Austen"
+msgstr "简奥斯汀的三部小说"
+
+#: templates/AuthorIdentification.html:9
+msgid "three novels or collections of short stories by G. K. Chesterton"
+msgstr "吉尔伯特·基思·卻斯特頓的三部小说或短篇小说集"
+
+#: templates/AuthorIdentification.html:13
+msgid "Stylometric Test: John Burrows’ Delta Method"
+msgstr "测试：John Burrows的Delta测试法"
+
+#: templates/AuthorIdentification.html:21
+msgid "Identify"
+msgstr "身份识别"
+
+#: templates/AuthorIdentification.html:44 templates/faq.html:29
 msgid "Backhome"
 msgstr "返回主页"
 
-#: templates/faq.html:26
+#: templates/faq.html:3
+msgid "Frequently Asked Questions !"
+msgstr "常见问题"
+
+#: templates/faq.html:17
+msgid "Delete"
+msgstr "删除"
+
+#: templates/faq.html:25
 msgid "Add"
 msgstr "添加"
 

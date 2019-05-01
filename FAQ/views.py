@@ -1,8 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.utils.translation import gettext as _
-
-
 # from django.http import HttpResponse
 from .models import FAQItems
 
@@ -12,13 +10,7 @@ from .models import FAQItems
 
 def FAQView(request):
     all_faq_items = FAQItems.objects.all()
-
-    important_text = _('lulu is small guaiguai')
-
-    print(important_text)
-    
-    # all_FAQ_items ='cd  FAQItems.objects.all()'
-    return render(request, 'faq.html', {'all_faqitems': all_faq_items, 'important_text': important_text})
+    return render(request, 'faq.html', {'all_faqitems': all_faq_items})
 
 def addQuestion(request):
     new_item = request.GET['content']

@@ -1,7 +1,6 @@
 {% load i18n %}
 
-<h1> Frequently Asked Questions !<h1>
-<h2> {{ important_text }}</h2>
+<h1> {% trans "Frequently Asked Questions !" %}<h1>
 <!-- <ul> 
     <li>How do I use this website? </li>
     <li>How can I view my history on checking information? </li>
@@ -15,7 +14,7 @@
                 style="display: flex; align-items: center; margin-block-end: 0.5em" 
                 methond="post">{% csrf_token %}
              {{ faqitem.content }} 
-            <input type="submit" value="Delete" style="margin-left: 1em"/>
+            <input type="submit" value="{% trans 'Delete' %}" style="margin-left: 1em"/>
         </form>
     </li>
     {% endfor%}

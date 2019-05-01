@@ -1,17 +1,16 @@
 {% load i18n %}
 
-<h1> Author Identification Task<h1>
+<h1> {% trans "Author Identification Task" %}<h1>
 
 <ul> 
-    Example: 
-    Using the NLTK tools to distinguish the three authors(the King James, Jane Austen, G. K. Chesterton) in the Gutenberg corpus
-    <li>the King James version of the Bible</li>
-    <li>three novels by Jane Austen</li>
-    <li>three novels or collections of short stories by G. K. Chesterton</li>
+    {% trans "Example: Using the NLTK tools to distinguish the three authors(the King James, Jane Austen, G. K. Chesterton) in the Gutenberg corpus" %}
+    <li>{% trans "the King James version of the Bible" %}</li>
+    <li>{% trans "three novels by Jane Austen" %}</li>
+    <li>{% trans "three novels or collections of short stories by G. K. Chesterton" %}</li>
 </ul>
 
 <br>
-    Stylometric Test: John Burrows’ Delta Method
+    {% trans "Stylometric Test: John Burrows’ Delta Method" %}
 </br>
 <!-- <li>Temporary Test Explanation: </li>
 <li>Input: 1. includes 'lulu' ; 2. includes 'baobao'; 3. includes 'love' 4. input others </li>
@@ -19,7 +18,7 @@
 
 <form method="post">{% csrf_token %}
     <textarea rows=10 cols=100 name="user_input_test">{{input_test}}</textarea>
-    <button type="submit">Identify</button>
+    <button type="submit">{% trans "Identify" %}</button>
     <br>
     <table>
         {% for resp_0_item in resp_0  %}
