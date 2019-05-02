@@ -85,79 +85,77 @@ def read_files_into_string(filenames):
     with open(f'/home/lududu/Documents/python_vm/USpeakIGuess/AuthorIdentification/{filename}', encoding = "ISO-8859-1") as f:
       strings.append(f.read())
   return ''.join(strings)
+  
 
 def deltamethod(filename):
-    # Open reference data file: 'DeltaMethod.pickle'
-    curren_path = os.getcwd()
-    classifier_f = open(f"{curren_path}/AuthorIdentification/DeltaMethod.pickle", "rb") 
-    feature_zscores = pickle.load(classifier_f) 
+  text = read_files_into_string(file)
+  return DeltaMethodText(text)
 
-    # Author candidate to be confirmed
-    Authors = ['Bible', 'Austen', 'Chesterton']
 
-    # Read testcase
-    TestCase = {
-    'UnknownAuthors':['test.txt'] #TestCase
-    }
+def DeltaMethodText(text):
+  curren_path = os.getcwd()
+  classifier_f = open(f"{curren_path}/AuthorIdentification/DeltaMethod.pickle", "rb") 
+  feature_zscores = pickle.load(classifier_f) 
 
-    TestCase_by_author = {}  
-    for author, files in TestCase.items():
-        TestCase_by_author[author] = read_files_into_string(files)
+  # Author candidate to be confirmed
+  Authors = ['Bible', 'Austen', 'Chesterton']
 
-    testcase_tokens = nltk.word_tokenize(TestCase_by_author['UnknownAuthors'])
-        
-    # Filter out punctuation and lowercase the tokens
-    testcase_tokens = [token.lower() for token in testcase_tokens if any(c.isalpha() for c in token)]
+  TestCase_by_author = {}  
+  TestCase_by_author['UnknownAuthors'] = text
 
-    # Calculate the test case's features
-    overall = len(testcase_tokens)
+  testcase_tokens = nltk.word_tokenize(TestCase_by_author['UnknownAuthors'])
+      
+  # Filter out punctuation and lowercase the tokens
+  testcase_tokens = [token.lower() for token in testcase_tokens if any(c.isalpha() for c in token)]
 
-    if overall < 25:
-        Deltascore_data=''
-        result ='Text is too short, can not be authenticated. '
-        return Deltascore_data, result
+  # Calculate the test case's features
+  overall = len(testcase_tokens)
 
-    testcase_freqs = {}
-    for feature in feature_zscores[0]:
-        presence = testcase_tokens.count(feature)
-        testcase_freqs[feature] = presence / overall
+  if overall < 25:
+      Deltascore_data=''
+      result ='Text is too short, can not be authenticated. '
+      return Deltascore_data, result
 
-    corpus_features = feature_zscores[2]
+  testcase_freqs = {}
+  for feature in feature_zscores[0]:
+      presence = testcase_tokens.count(feature)
+      testcase_freqs[feature] = presence / overall
 
-    # Calculate the test case's feature z-scores
-    testcase_zscores = {}
-    for feature in feature_zscores[0]:
-        feature_val = testcase_freqs[feature]
-        feature_mean = corpus_features[feature]['Mean']
-        feature_stdev = corpus_features[feature]['StdDev']
-        testcase_zscores[feature] = (feature_val - feature_mean) / feature_stdev
-    # print("Test case z-score for feature", feature, "is", testcase_zscores[feature])
+  corpus_features = feature_zscores[2]
 
-    #----------------Delta Method----------------
-    # Calculating Delta-  the formula for Delta defined by Burrows
-    author_by_delta = {}
-    Deltascore = ''
-    Deltascore_data = []
-    delta_list =[]
+  # Calculate the test case's feature z-scores
+  testcase_zscores = {}
+  for feature in feature_zscores[0]:
+      feature_val = testcase_freqs[feature]
+      feature_mean = corpus_features[feature]['Mean']
+      feature_stdev = corpus_features[feature]['StdDev']
+      testcase_zscores[feature] = (feature_val - feature_mean) / feature_stdev
+  # print("Test case z-score for feature", feature, "is", testcase_zscores[feature])
 
-    for author in Authors:
-        delta = 0
-        for feature in feature_zscores[0]:
-            delta += math.fabs((testcase_zscores[feature] - 
-                                feature_zscores[1][author][feature]))
-        delta /= len(feature_zscores[0])
+  #----------------Delta Method----------------
+  # Calculating Delta-  the formula for Delta defined by Burrows
+  author_by_delta = {}
+  Deltascore = ''
+  Deltascore_data = []
+  delta_list =[]
 
-        author_by_delta[delta] = author
+  for author in Authors:
+      delta = 0
+      for feature in feature_zscores[0]:
+          delta += math.fabs((testcase_zscores[feature] - 
+                              feature_zscores[1][author][feature]))
+      delta /= len(feature_zscores[0])
 
-        delta_list.append(delta)
+      author_by_delta[delta] = author
 
-        Deltascore = "Delta score for candidate  " + author + " is " + str(delta)
-        Deltascore_data.append(Deltascore)
+      delta_list.append(delta)
 
-    min_delta = min(delta_list)
-    most_likely_author = author_by_delta[min_delta]
+      Deltascore = "Delta score for candidate  " + author + " is " + str(delta)
+      Deltascore_data.append(Deltascore)
 
-    result = 'Elta Identifition Result: " ' + most_likely_author + ' " as TestCase most likely author.'
+  min_delta = min(delta_list)
+  most_likely_author = author_by_delta[min_delta]
 
-    return Deltascore_data, result
-    # return result
+  result = 'Elta Identifition Result: " ' + most_likely_author + ' " as TestCase most likely author.'
+
+  return Deltascore_data, result

@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 # from AuthorIdentification.inputoutput import input_output  #test tmp
-from AuthorIdentification.Deltamethod import deltamethod  #test tmp
+from AuthorIdentification.Deltamethod import DeltaMethodText  #test tmp
 from django.core.files.base import ContentFile # save input_text into a file
 import io, os
 
@@ -13,15 +13,10 @@ def AuthorIdView(request):
     if request.POST:
         user_input_test=request.POST.get('user_input_test', '')
 
-        curren_path = os.getcwd()
-        print(curren_path)
-        txt_file = open(f"{curren_path}/AuthorIdentification/test.txt", "w")
-        txt_file.write(user_input_test)
-        txt_file.close()
-
         #test tmp import
         # IdentifyResult=input_output(user_input_test)
-        IdentifyResult=deltamethod('test.txt')
+        # IdentifyResult=deltamethod('test.txt')
+        IdentifyResult=DeltaMethodText(user_input_test)
         # print(type(IdentifyResult))
         # print(IdentifyResult[0])
     return render(request, 'AuthorIdentification.html', {'resp_0': IdentifyResult[0],'resp_1': IdentifyResult[1],'user_input_test':user_input_test})
